@@ -40,6 +40,11 @@ Quantum annealing is a special type of quantum computation, where qubits are con
   <figcaption><b>Figure 3:</b> Connectivity graph for a Quantum annealing device with Chimera topology. Each dot represents a qubit and the lines represent the couplings between them. While embedding a RBM into this graph naively is impossible, it can be done by chaining qubits together with strong couplings, allowing effective qubit size of the system to be sacrificed for more connections.</figcaption>
 </figure>
 
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/qubits_to_nmax.png" alt="Qubits to Nmax"/>
+  <figcaption><b>Figure 5:</b> Relation between the amount of available qubits in a Chimera topology and the allowed maximum layer size. Two red lines show the theoretical maximum capacity of two existing quantum annealing devices: DWave 2000Q and DWave Advantage. Note that the DWave Advantage uses a different connectivity graph compared to Chimera topology, and it could have more efficient embedding schemes available.</figcaption>
+</figure>
+
 ## Unit Dropout Method
 
 Unit Dropout method is a common weight regularization method, where units from the model are “dropped” stochastically with a probability of p, for the duration of a single batch [5]. While the most optimal choice for this p is around 0.5, this value can be pushed to be even larger, causing the computed layer sizes to be scaled to (1 – p) of their original size. This is very convenient when using quantum annealing to estimate the model distribution of the RBM, as it allows the layer sizes to be increased without needing to increase the device size. It also allows the problem to be parallelized for multiple quantum annealers.
