@@ -68,10 +68,16 @@ The effect of extreme values of p were tested on the MNIST dataset [6] with a cu
 ### References
 
 [1] Hinton, G.E., & Sejnowski, J. (1983). OPTIMAL PERCEPTUAL INFERENCE.
+
 [2] Hinton, G. E., Osindero, S., & Teh, Y.-W. (07 2006). A Fast Learning Algorithm for Deep Belief Nets. Neural Computation, 18(7), 1527–1554. doi:10.1162/neco.2006.18.7.1527
+
 [3] Hauke, P., Katzgraber, H. G., Lechner, W., Nishimori, H., & Oliver, W. D. (2020). Perspectives of quantum annealing: methods and implementations. Reports on Progress in Physics, 83(5), 054401. doi:10.1088/1361-6633/ab85b8
+
 [4] Benedetti, M., Realpe-Gómez, J., Biswas, R., & Perdomo-Ortiz, A. (2016). Estimation of effective temperatures in quantum annealers for sampling applications: A case study with possible applications in deep learning. Physical Review A, 94(2). doi:10.1103/physreva.94.022308
+
 [5] Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. R. (2012). Improving neural networks by preventing co-adaptation of feature detectors. arXiv [cs.NE]. Opgehaal van http://arxiv.org/abs/1207.0580
+
 [6] Salmenperä, I. E., (2021). Training Quantum Restricted Boltzmann Machines Using Dropout Method. http://urn.fi/URN:NBN:fi:hulib-202105112138
+
 [7] QDBN project github - https://github.com/Ilmosal/QDBN
 
