@@ -3,14 +3,12 @@
 Ilmo Salmenpera,
 University of Helsinki
 
-
-
-Repository for my online poster for FCAI Days 2021 about using Unit dropout method to train Quantum Boltzmann Machines.
-
 ## Abstract
 
 Quantum annealing is a form of quantum computing that has wide applicability in many realms, like quantum chemistry, logistics or machine learning. One of these applications is to use the quantum annealing device as a quantum sampler for sampling from the model distribution of a common machine learning model called Boltzmann Machines. This has been shown to be a quite promising way of applying quantum computing to machine learning in practice, outperforming the current classical algorithms for performing these sampling tasks.
+
 While these devices tend to be large in comparison to universal quantum computers, they still lacking in size to be used in practical machine learning tasks. This calls for clever strategies to mitigate these issues, as most actual machine learning tasks require large layer sizes to perform well. Unit dropout method is one candidate for alleviating these issues. This model agnostic technique was originally developed for regulating weights of machine learning models, but it can also be used to reduce the effective overall size of the layers during training.
+
 We tested the effects of extreme rates of unit dropout in the process of pretraining multiple restricted Boltzmann machines to form deep belief network and determined what sort of constraints do the results infer to quantum hardware they would be computed on. While the optimal dropout rate seems to be around 50%, which is supported by existing research, more extreme rates of dropout can give further benefits for quantum machine learning, as they allow for larger layer sizes to be used during training. Even the model with dropout rate of 92% managed to learn some representation of the underlying model distribution, which is important, as this is the model that could be feasibly computed using existing quantum annealing devices. 
 
 ## Introduction
@@ -68,3 +66,12 @@ Attaching to labels to RBMs usually requires an additional layer of labeling uni
 The effect of extreme values of p were tested on the MNIST dataset [6] with a custom RBM implementation written in python [7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with p = 0.92, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
 
 ### References
+
+[1] Hinton, G.E., & Sejnowski, J. (1983). OPTIMAL PERCEPTUAL INFERENCE.
+[2] Hinton, G. E., Osindero, S., & Teh, Y.-W. (07 2006). A Fast Learning Algorithm for Deep Belief Nets. Neural Computation, 18(7), 1527–1554. doi:10.1162/neco.2006.18.7.1527
+[3] Hauke, P., Katzgraber, H. G., Lechner, W., Nishimori, H., & Oliver, W. D. (2020). Perspectives of quantum annealing: methods and implementations. Reports on Progress in Physics, 83(5), 054401. doi:10.1088/1361-6633/ab85b8
+[4] Benedetti, M., Realpe-Gómez, J., Biswas, R., & Perdomo-Ortiz, A. (2016). Estimation of effective temperatures in quantum annealers for sampling applications: A case study with possible applications in deep learning. Physical Review A, 94(2). doi:10.1103/physreva.94.022308
+[5] Hinton, G. E., Srivastava, N., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. R. (2012). Improving neural networks by preventing co-adaptation of feature detectors. arXiv [cs.NE]. Opgehaal van http://arxiv.org/abs/1207.0580
+[6] Salmenperä, I. E., (2021). Training Quantum Restricted Boltzmann Machines Using Dropout Method. http://urn.fi/URN:NBN:fi:hulib-202105112138
+[7] QDBN project github - https://github.com/Ilmosal/QDBN
+
