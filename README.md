@@ -21,12 +21,12 @@ Text
 
 RBMs are a type of stochastic neural networks, characterized by visible and hidden layers of units that are connected to each other symmetrically [1]. While they aren’t that useful by themselves, they are integral to many widely used machine learning models like deep belief networks [2]. Training RBMs require evaluation of a model distribution of the system, which is computationally intractable when done analytically, but feasible using sampling methods.
 
-<figure>
-  <center>
-  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/bm.png" alt="Restricted Boltzmann Machine"/>
-  <figcaption>This is my caption text.</figcaption>
-  </center>
-</figure>
+<p align="center">
+  <figure>
+    <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/bm.png" alt="Restricted Boltzmann Machine"/>
+    <figcaption><b>1.1 This is my caption text.</b></figcaption>
+  </figure>
+</p>
 
 ## Quantum annealing and sampling
 
