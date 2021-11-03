@@ -1,4 +1,9 @@
-# FCAIDays2021Poster
+# Training quantum Boltzmann machines using extreme rates of unit dropout 
+
+Ilmo Salmenpera,
+University of Helsinki
+
+
 
 Repository for my online poster for FCAI Days 2021 about using Unit dropout method to train Quantum Boltzmann Machines.
 
@@ -16,7 +21,10 @@ Text
 
 RBMs are a type of stochastic neural networks, characterized by visible and hidden layers of units that are connected to each other symmetrically [1]. While they aren’t that useful by themselves, they are integral to many widely used machine learning models like deep belief networks [2]. Training RBMs require evaluation of a model distribution of the system, which is computationally intractable when done analytically, but feasible using sampling methods.
 
-![Restricted Boltzmann Machine](https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/bm.png)
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/bm.png" alt="Restricted Boltzmann Machine"/>
+  <figcaption>This is my caption text.</figcaption>
+</figure>
 
 ## Quantum annealing and sampling
 
