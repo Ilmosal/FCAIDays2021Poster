@@ -21,18 +21,33 @@ Text
 
 RBMs are a type of stochastic neural networks, characterized by visible and hidden layers of units that are connected to each other symmetrically [1]. While they aren’t that useful by themselves, they are integral to many widely used machine learning models like deep belief networks [2]. Training RBMs require evaluation of a model distribution of the system, which is computationally intractable when done analytically, but feasible using sampling methods.
 
-<figure align="center">
+<figure>
   <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/bm.png" alt="Restricted Boltzmann Machine"/>
-  <figcaption><b>1.1 This is my caption text.</b></figcaption>
+  <figcaption><b>Figure 1:</b> Picture of the two layers of a RBM. Necessary information will be encoded in the visible layer, from which the states of the units in the hidden layer will be inferred from using a sigmoid fuction. While this image doesn't show labeling units, they can be added separately by including a softmax group of units attached to the hidden layer.</figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/rbm_kaavat.png" alt="Learning rules for Restricted Boltzmann Machines"/>
+  <figcaption><b>Figure 2:</b> Learning rule for the parameters of a RBM. The first equation shows how a single parameter will be updated according to two distinct distributions: the expected data distribution and the expected model distribution. Computing the data distribution is very simple, while computing the model distribution is intractable. This means that the model distribution needs to be estimated using sampling methods.</figcaption>
 </figure>
 
 ## Quantum annealing and sampling
 
 Quantum annealing is a special type of quantum computation, where qubits are connected to each other by tweakable couplings, as opposed to the gate model for quantum computation [3]. These devices are capable of solving the QUBO problems by finding the minimum of the hamiltonian energy function of the system. They can also be used for efficiently sampling from the boltzmann distribution of the characterized problem, allowing them to be used to estimate the model distribution of a RBM [4]. While these devices generally have larger qubit counts than universal quantum computers, embedding these problems still restrict the layer sizes of RBMs to unconventionally small widths.
 
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/chimera.png" alt="Chimera Graph"/>
+  <figcaption><b>Figure 3:</b> Connectivity graph for a Quantum annealing device with Chimera topology. Each dot represents a qubit and the lines represent the couplings between them. While embedding a RBM into this graph naively is impossible, it can be done by chaining qubits together with strong couplings, allowing effective qubit size of the system to be sacrificed for more connections.</figcaption>
+</figure>
+
 ## Unit Dropout Method
 
 Unit Dropout method is a common weight regularization method, where units from the model are “dropped” stochastically with a probability of p, for the duration of a single batch [5]. While the most optimal choice for this p is around 0.5, this value can be pushed to be even larger, causing the computed layer sizes to be scaled to (1 – p) of their original size. This is very convenient when using quantum annealing to estimate the model distribution of the RBM, as it allows the layer sizes to be increased without needing to increase the device size. It also allows the problem to be parallelized for multiple quantum annealers.
+
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/dropout.png" alt="Unit dropout method"/>
+  <figcaption><b>Figure 4:</b> Unit Dropout Method. Units will be dropped off from the graph with a probability of p. This value can also be fixed so that the amount of dropped out units remains constant during the dropout process.</figcaption>
+</figure>
 
 ## Results
 
