@@ -3,7 +3,7 @@
 Ilmo Salmenpera,
 University of Helsinki
 
-## Abstract
+### Abstract
 
 Quantum annealing is a form of quantum computing that has wide applicability in many realms, like quantum chemistry, logistics or machine learning. One of these applications is to use the quantum annealing device as a quantum sampler for sampling from the model distribution of a common machine learning model called Boltzmann Machines. This has been shown to be a quite promising way of applying quantum computing to machine learning in practice, outperforming the current classical algorithms for performing these sampling tasks.
 
@@ -13,7 +13,7 @@ We tested the effects of extreme rates of unit dropout in the process of pretrai
 
 ## Introduction
 
-Text
+Quantum computing is a field that is currently maturing rapidly and approaching the limit of practicality. Machine Learning is one of the realms, in which this novel technology can provide advantages over conventional classical methods. In the coming decades most advances are likely to focus on hybrid algorithms, instead of purely quantum ones, as device sizes are still small. This poster provides an overview of how quantum annealing devices can be used to train Restricted Boltzmann machines, how limited device sizes affects them and also a way of mitigating these limitations using a common weight regularization algoritm called the Unit Dropout method. 
 
 ## Restricted Boltzmann machines (RBM)
 
@@ -45,11 +45,11 @@ Quantum annealing is a special type of quantum computation, where qubits are con
 
 ## Unit Dropout Method
 
-Unit Dropout method is a common weight regularization method, where units from the model are “dropped” stochastically with a probability of p, for the duration of a single batch [5]. While the most optimal choice for this p is around 0.5, this value can be pushed to be even larger, causing the computed layer sizes to be scaled to (1 – p) of their original size. This is very convenient when using quantum annealing to estimate the model distribution of the RBM, as it allows the layer sizes to be increased without needing to increase the device size. It also allows the problem to be parallelized for multiple quantum annealers.
+Unit Dropout method is a common weight regularization method, where units from the model are “dropped” stochastically with a probability of p, for the duration of a single batch [5]. While the most optimal choice for this p is around 0.5, this value can be pushed to be even larger, causing the computed layer sizes to be scaled to (1 – p) of their original size. When using this method with quantum annealing, it is useful to fix the amount of dropped units to S<sub>max</sub>, which makes the layer sizes identical for each run, as this guarantees that the amount of remaining units can still be embedded into the device, but no qubits are also wasted. Unit Dropout method is very for training RBMs while using quantum annealing to estimate the model distribution of the RBM, as it allows the layer sizes to be increased without needing to increase the device size. It also allows the problem to be parallelized for multiple quantum annealers.
 
 <figure>
   <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/dropout.png" alt="Unit dropout method"/>
-  <figcaption><b>Figure 4:</b> Unit Dropout Method. Units will be dropped off from the graph with a probability of p. This value can also be fixed so that the amount of dropped out units remains constant during the dropout process.</figcaption>
+  <figcaption><b>Figure 4:</b> Unit Dropout Method. Units will be dropped off from the graph with a probability of p, which corresponds to a parameter S<sub>max</sub>.</figcaption>
 </figure>
 
 ## Implicit Labeling for RBMs
@@ -63,7 +63,7 @@ Attaching to labels to RBMs usually requires an additional layer of labeling uni
 
 ## Results
 
-The effect of extreme values of p were tested on the MNIST dataset [6] with a custom RBM implementation written in python [7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with p = 0.92, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
+The effect of extreme values of p were tested on the MNIST dataset with a custom RBM implementation written in python [6-7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with p = 0.92, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
 
 ### References
 
@@ -79,5 +79,5 @@ The effect of extreme values of p were tested on the MNIST dataset [6] with a cu
 
 [6] Salmenperä, I. E., (2021). Training Quantum Restricted Boltzmann Machines Using Dropout Method. http://urn.fi/URN:NBN:fi:hulib-202105112138
 
-[7] QDBN project github - https://github.com/Ilmosal/QDBN
+[7] Salmenperä, I. E., QDBN, (2021), Github repository, https://github.com/Ilmosal/QDBN
 
