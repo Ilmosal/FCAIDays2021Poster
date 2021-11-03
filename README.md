@@ -49,12 +49,17 @@ Unit Dropout method is a common weight regularization method, where units from t
   <figcaption><b>Figure 4:</b> Unit Dropout Method. Units will be dropped off from the graph with a probability of p. This value can also be fixed so that the amount of dropped out units remains constant during the dropout process.</figcaption>
 </figure>
 
-## Results
-
-The effect of extreme values of p were tested on the MNIST dataset [6] with a custom RBM implementation written in python [7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with p = 0.92, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
-
 ## Implicit Labeling for RBMs
 
 Attaching to labels to RBMs usually requires an additional layer of labeling units to be attached to the hidden layer of the RBM. While it is possible to do this with quantum annealing, it can be quite unefficient, as there are very few qubits to work with. More efficient is to add implicit label influence to the biases of the hidden units for the duration of sampling and then sample the states of the labeling units afterwards from the states of the hidden units. This does cause only a minor performance hit to the model and it can be very useful for the sake of developing new sampling techniques for the QRBMs, as most of the time labeling is used to only evaluate the general performance of the model.
+
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/implicit_labeling.png" alt="Implicit Labeling"/>
+  <figcaption><b>Figure 5:</b> Three phases of Implicit Labeling: first the an "average" influence of the labels to the hidden units is computed by setting all the labels to 0.5, and inferring their influence to the hidden layer using the sigmoid activation rule and adding these values to the biases of the hidden layer. Then during the sampling phase, the sampling is done without any active influence from the labels. After the sampling the states of the labeling units will be inferred from the hidden units as normal, and these values will be used for the gradient descent process.</figcaption>
+</figure>
+
+## Results
+
+The effect of extreme values of p were tested on the MNIST dataset [6] with a custom RBM implementation written in python [7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with p = 0.92, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
 
 ### References
