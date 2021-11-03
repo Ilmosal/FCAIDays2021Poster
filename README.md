@@ -3,14 +3,6 @@
 Ilmo Salmenpera,
 University of Helsinki
 
-### Abstract
-
-Quantum annealing is a form of quantum computing that has wide applicability in many realms, like quantum chemistry, logistics or machine learning. One of these applications is to use the quantum annealing device as a quantum sampler for sampling from the model distribution of a common machine learning model called Boltzmann Machines. This has been shown to be a quite promising way of applying quantum computing to machine learning in practice, outperforming the current classical algorithms for performing these sampling tasks.
-
-While these devices tend to be large in comparison to universal quantum computers, they still lacking in size to be used in practical machine learning tasks. This calls for clever strategies to mitigate these issues, as most actual machine learning tasks require large layer sizes to perform well. Unit dropout method is one candidate for alleviating these issues. This model agnostic technique was originally developed for regulating weights of machine learning models, but it can also be used to reduce the effective overall size of the layers during training.
-
-We tested the effects of extreme rates of unit dropout in the process of pretraining multiple restricted Boltzmann machines to form deep belief network and determined what sort of constraints do the results infer to quantum hardware they would be computed on. While the optimal dropout rate seems to be around 50%, which is supported by existing research, more extreme rates of dropout can give further benefits for quantum machine learning, as they allow for larger layer sizes to be used during training. Even the model with dropout rate of 92% managed to learn some representation of the underlying model distribution, which is important, as this is the model that could be feasibly computed using existing quantum annealing devices. 
-
 ## Introduction
 
 Quantum computing is a field that is currently maturing rapidly and approaching the limit of practicality. Machine Learning is one of the realms, in which this novel technology can provide advantages over conventional classical methods. In the coming decades most advances are likely to focus on hybrid algorithms, instead of purely quantum ones, as device sizes are still small. This poster provides an overview of how quantum annealing devices can be used to train Restricted Boltzmann machines, how limited device sizes affects them and also a way of mitigating these limitations using a common weight regularization algoritm called the Unit Dropout method. 
