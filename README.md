@@ -1,6 +1,7 @@
 # Training quantum Boltzmann machines using extreme rates of unit dropout 
 
-Ilmo Salmenpera,
+Ilmo Salmenperä, Jukka K. Nurminen
+
 University of Helsinki
 
 ## Introduction
@@ -32,7 +33,7 @@ Quantum annealing is a special type of quantum computation, where qubits are con
 
 <figure>
   <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/qubits_to_nmax.png" alt="Qubits to Nmax"/>
-  <figcaption><b>Figure 5:</b> Relation between the amount of available qubits in a Chimera topology and the allowed maximum layer size. Two red lines show the theoretical maximum capacity of two existing quantum annealing devices: DWave 2000Q and DWave Advantage. Note that the DWave Advantage uses a different connectivity graph compared to Chimera topology, and it could have more efficient embedding schemes available.</figcaption>
+  <figcaption><b>Figure 4:</b> Relation between the amount of available qubits in a Chimera topology and the allowed maximum layer size. Two red lines show the theoretical maximum capacity of two existing quantum annealing devices: DWave 2000Q and DWave Advantage. Note that the DWave Advantage uses a different connectivity graph compared to Chimera topology, and it could have more efficient embedding schemes available.</figcaption>
 </figure>
 
 ## Unit Dropout Method
@@ -41,7 +42,7 @@ Unit Dropout method is a common weight regularization method, where units from t
 
 <figure>
   <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/dropout.png" alt="Unit dropout method"/>
-  <figcaption><b>Figure 4:</b> Unit Dropout Method. Units will be dropped off from the graph with a probability of p, which corresponds to a parameter S<sub>max</sub>.</figcaption>
+  <figcaption><b>Figure 5:</b> Unit Dropout Method. Units will be dropped off from the graph with a probability of p, which corresponds to a parameter S<sub>max</sub>.</figcaption>
 </figure>
 
 ## Implicit Labeling for RBMs
@@ -50,12 +51,17 @@ Attaching to labels to RBMs usually requires an additional layer of labeling uni
 
 <figure>
   <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/implicit_labeling.png" alt="Implicit Labeling"/>
-  <figcaption><b>Figure 5:</b> Three phases of Implicit Labeling: first the an "average" influence of the labels to the hidden units is computed by setting all the labels to 0.5, and inferring their influence to the hidden layer using the sigmoid activation rule and adding these values to the biases of the hidden layer. Then during the sampling phase, the sampling is done without any active influence from the labels. After the sampling the states of the labeling units will be inferred from the hidden units as normal, and these values will be used for the gradient descent process.</figcaption>
+  <figcaption><b>Figure 6:</b> Three phases of Implicit Labeling: first the an "average" influence of the labels to the hidden units is computed by setting all the labels to 0.5, and inferring their influence to the hidden layer using the sigmoid activation rule and adding these values to the biases of the hidden layer. Then during the sampling phase, the sampling is done without any active influence from the labels. After the sampling the states of the labeling units will be inferred from the hidden units as normal, and these values will be used for the gradient descent process.</figcaption>
 </figure>
 
 ## Results
 
-The effect of extreme values of p were tested on the MNIST dataset with a custom RBM implementation written in python [6-7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with p = 0.92, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
+The effect of extreme values of p were tested on the MNIST dataset with a custom RBM implementation written in python [6-7]. The results show that while the most optimal value for p is around 0.5 as stated in the litiature, the value can be pushed further without large performance issues on the prediction rate, allowing for layer sizes eight times larger than would normally be possible. The model can with S<sub>max</sub> = 64, allowing contemporary quantum annealing devices to be used for training a fully connected RBM on the full MNIST dataset, even if the prediction rate suffers greatly as result.
+
+<figure>
+  <img src="https://github.com/Ilmosal/FCAIDays2021Poster/blob/main/pictures/pred_rate.png" alt="Prediction rate"/>
+  <figcaption><b>Figure 7:</b> Prediction rates of 6 networks with different values of S<sub>max</sub>. While the network S<sub>max</sub> = 64 is not able reach similar prediction rates as the rest of the networks, it can still learn some representation of the underlying distribution, even if 92% of all units are being dropped.</figcaption>
+</figure>
 
 ### References
 
